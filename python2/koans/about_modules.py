@@ -17,7 +17,7 @@ class AboutModules(Koan):
         import local_module  # local_module.py
 
         duck = local_module.Duck()
-        self.assertEqual(__, duck.name)
+        self.assertEqual("duck", duck.name)
 
     def test_importing_attributes_from_classes_using_from_keyword(self):
         from local_module import Duck
