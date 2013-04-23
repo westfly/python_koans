@@ -11,7 +11,7 @@ class AboutExceptions(Koan):
 
     def test_exceptions_inherit_from_exception(self):
         mro = self.MySpecialError.__mro__
-        self.assertEqual(__, mro[1].__name__)
+        self.assertEqual( mro[1].__name__)
         self.assertEqual(__, mro[2].__name__)
         self.assertEqual(__, mro[3].__name__)
         self.assertEqual(__, mro[4].__name__)
