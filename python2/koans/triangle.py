@@ -20,6 +20,10 @@
 def triangle(a, b, c):
     # DELETE 'PASS' AND WRITE THIS CODE
     slide_list = sorted([a,b,c])
+    if slide_list [0]<=0:
+      raise TriangleError
+    if slide_list[0] + slide_list[1] <= slide_list[2]:
+      raise TriangleError
     if slide_list[0] == slide_list[2]:
       return 'equilateral'
     elif slide_list[1] == slide_list[2]:
