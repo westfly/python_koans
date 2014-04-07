@@ -35,6 +35,11 @@ from runner.koan import *
 
 def score(dice):
     # You need to write this method
+    sum = 0
+    one_cnt = 0
+    five_cnt;
+    for x in dice:
+      if x == 1
     pass
 
 
