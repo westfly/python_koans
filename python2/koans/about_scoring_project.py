@@ -35,13 +35,20 @@ from runner.koan import *
 
 def score(dice):
     # You need to write this method
-    sum = 0
-    one_cnt = 0
-    five_cnt;
-    for x in dice:
-      if x == 1
-    pass
-
+    score = 0
+    for i in range(1, 10):
+      count = dice.count(i)
+      if count >=3:
+        if i == 1:
+          score += 1000;
+        else:
+          score += i*100
+        count -= 3
+      if i == 1:
+        score +=100 * count
+      if i == 5:
+        score += 50 * count
+    return score
 
 class AboutScoringProject(Koan):
     def test_score_of_an_empty_list_is_zero(self):
