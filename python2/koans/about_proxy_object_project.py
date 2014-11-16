@@ -13,7 +13,7 @@
 # missing handler and any other supporting methods.  The specification
 # of the Proxy class is given in the AboutProxyObjectProject koan.
 
-# Note: This is a bit trickier that its Ruby Koans counterpart, but you
+# Note: This is a bit trickier than its Ruby Koans counterpart, but you
 # can do it!
 
 from runner.koan import *
@@ -22,11 +22,30 @@ from runner.koan import *
 class Proxy(object):
     def __init__(self, target_object):
         # WRITE CODE HERE
-
+        object.__setattr__(self, "_attribute_list", [])
         #initialize '_obj' attribute last. Trust me on this!
         self._obj = target_object
 
-    # WRITE CODE HERE
+    def __setattr__(self, attr_name, value):
+        if not attr_name.startswith('_'):
+            self._attribute_list.append(attr_name)
+        object.__setattr__(self, attr_name, value)       
+
+    def __getattr__(self, attr_name):
+        self._attribute_list.append(attr_name)
+        return self._obj.__getattribute__(attr_name)
+
+    def messages(self):
+        return self._attribute_list
+
+    def was_called(self, attr_name):
+        if attr_name in self._attribute_list:
+            return True
+        else:
+            return False
+
+    def number_of_times_called(self, attr_name):
+        return self._attribute_list.count(attr_name)
 
 
 # The proxy object should pass the following Koan:
@@ -161,3 +180,4 @@ class TelevisionTest(Koan):
 
         tv.channel = 11
         self.assertEqual(11, tv.channel)
+
